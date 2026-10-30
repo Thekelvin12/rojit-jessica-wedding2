@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rojit & Jessica — Wedding Invitation</title>
+<meta name="description" content="A royal traditional wedding invitation for Ngariyanbam Rojit Singh and Aribam Jessica Sharma.">
+<meta name="theme-color" content="#4a0e1e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#4a0e1e;
+  --maroon-deep:#2e0713;
+  --crimson:#7d1631;
+  --gold:#d4a94c;
+  --gold-light:#f1d58a;
+  --gold-dark:#9a7226;
+  --ivory:#f7ecd2;
+  --leaf:#1f4a3a;
+  --display:'Cinzel Decorative','Cinzel',serif;
+  --label:'Cinzel',serif;
+  --body:'Cormorant Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--maroon-deep);
+  color:var(--ivory);
+  font-family:var(--body);
+  font-size:20px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+body.locked{overflow:hidden}
+
+/* Phanek-style woven stripe — the textile border of Manipur */
+.phanek{
+  height:22px;
+  background:
+    linear-gradient(90deg,transparent 0 6px,var(--gold) 6px 8px,transparent 8px 14px) 0 3px/14px 4px repeat-x,
+    repeating-linear-gradient(90deg,var(--crimson) 0 10px,var(--maroon-deep) 10px 14px,var(--leaf) 14px 18px,var(--maroon-deep) 18px 22px);
+  border-top:2px solid var(--gold);
+  border-bottom:2px solid var(--gold);
+  box-shadow:0 0 0 1px var(--gold-dark) inset;
+}
+
+/* ---------- ROYAL DOOR ---------- */
+#gate{
+  position:fixed;inset:0;z-index:50;
+  perspective:1600px;
+  overflow:hidden;
+  background:#000;
+}
+.door{
+  position:absolute;top:0;bottom:0;width:50.2%;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(241,213,138,.12),transparent 60%),
+    linear-gradient(180deg,#5a1226 0%,#3a0a18 100%);
+  transition:transform 2.2s cubic-bezier(.62,.04,.25,1);
+  display:flex;align-items:center;justify-content:center;
+  backface-visibility:hidden;
+}
+.door.left{left:0;transform-origin:left center;border-right:3px solid var(--gold-dark)}
+.door.right{right:0;transform-origin:right center;border-left:3px solid var(--gold-dark)}
+.door::before{ /* outer gold frame */
+  content:"";position:absolute;inset:3.5vmin;
+  border:2px solid var(--gold);
+  box-shadow:0 0 0 6px var(--maroon-deep),0 0 0 8px var(--gold-dark);
+}
+.door::after{ /* diamond lattice */
+  content:"";position:absolute;inset:6vmin;
+  background:
+    linear-gradient(45deg,transparent 48%,rgba(212,169,76,.28) 49% 51%,transparent 52%) 0 0/46px 46px,
+    linear-gradient(-45deg,transparent 48%,rgba(212,169,76,.28) 49% 51%,transparent 52%) 0 0/46px 46px;
+  opacity:.8;
+}
+.panel{
+  position:relative;z-index:1;width:68%;height:62%;
+  border:2px solid var(--gold);
+  border-radius:999px 999px 6px 6px;
+  background:rgba(46,7,19,.72);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:inset 0 0 0 6px rgba(46,7,19,.9),inset 0 0 0 8px var(--gold-dark);
+}
+.panel svg{width:58%;max-width:150px;height:auto;opacity:.95}
+.stud{position:absolute;z-index:2;width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,var(--gold-light),var(--gold-dark));
+  box-shadow:0 1px 3px #000}
+.door.left .stud{right:5vmin}
+.door.right .stud{left:5vmin}
+.stud.a{top:20%}.stud.b{top:50%}.stud.c{top:80%}
+.ring{position:absolute;z-index:2;top:50%;width:54px;height:54px;margin-top:-27px;border-radius:50%;
+  border:5px solid var(--gold);box-shadow:0 2px 6px #000,inset 0 0 0 2px var(--gold-dark)}
+.door.left .ring{right:9vmin}
+.door.right .ring{left:9vmin}
+
+#gate.open .door.left{transform:rotateY(-112deg)}
+#gate.open .door.right{transform:rotateY(112deg)}
+#gate .light{
+  position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(circle at 50% 50%,#ffe9a8 0%,#d4a94c 30%,#4a0e1e 75%);
+  opacity:0;transition:opacity 1.6s ease .3s;
+}
+#gate.open .light{opacity:1}
+#gate.gone{display:none}
+
+.seal{
+  position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-50%);
+  text-align:center;transition:opacity .5s,transform .5s;
+}
+#gate.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.8);pointer-events:none}
+.seal .kicker{
+  font-family:var(--label);letter-spacing:.28em;font-size:.62rem;color:var(--gold-light);
+  margin-bottom:.9rem;white-space:nowrap;text-shadow:0 1px 4px #000;
+}
+.open-btn{
+  font-family:var(--label);font-weight:600;font-size:.82rem;letter-spacing:.18em;
+  color:var(--maroon-deep);cursor:pointer;
+  padding:1.05rem 1.7rem;border:2px solid var(--gold-light);border-radius:999px;
+  background:linear-gradient(180deg,var(--gold-light),var(--gold) 55%,var(--gold-dark));
+  box-shadow:0 0 0 5px var(--maroon-deep),0 0 0 7px var(--gold),0 10px 30px rgba(0,0,0,.6);
+  transition:transform .2s,filter .2s;
+}
+.open-btn:hover{transform:scale(1.05);filter:brightness(1.08)}
+.open-btn:focus-visible{outline:3px solid #fff;outline-offset:6px}
+
+/* ---------- INVITATION ---------- */
+main{display:none}
+body.revealed main{display:block;animation:rise 1.6s ease both}
+@keyframes rise{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:none}}
+
+.hero{
+  min-height:100vh;min-height:100svh;
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:4.5rem 1.4rem 3.5rem;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(212,169,76,.22),transparent 55%),
+    radial-gradient(ellipse at 50% 100%,rgba(125,22,49,.55),transparent 60%),
+    linear-gradient(180deg,var(--maroon) 0%,var(--maroon-deep) 100%);
+}
+.hero > .phanek.top{position:absolute;top:0;left:0;right:0}
+.hero > .phanek.bottom{position:absolute;bottom:0;left:0;right:0}
+
+.ornament{font-size:1.6rem;color:var(--gold);letter-spacing:.5em;margin-bottom:1.6rem}
+.blessing{font-style:italic;font-size:1.25rem;color:var(--gold-light)}
+.together{margin:.2rem 0 1.8rem;font-size:1.2rem}
+
+/* couple photo in a Kangla-style arched frame */
+.photo-wrap{
+  width:min(72vw,300px);aspect-ratio:3/4;
+  border-radius:999px 999px 14px 14px;
+  padding:9px;margin:0 auto 2.2rem;
+  background:linear-gradient(160deg,var(--gold-light),var(--gold-dark) 50%,var(--gold-light));
+  box-shadow:0 0 0 6px var(--maroon-deep),0 0 0 8px var(--gold),0 24px 60px rgba(0,0,0,.65);
+  position:relative;
+}
+.photo-wrap .inner{
+  width:100%;height:100%;border-radius:999px 999px 8px 8px;overflow:hidden;
+  background:var(--maroon-deep);border:3px solid var(--maroon-deep);
+}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:50% 48%;display:block}
+
+h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(2.2rem,9vw,3.8rem);line-height:1.15;
+  background:linear-gradient(180deg,var(--gold-light),var(--gold) 55%,var(--gold-dark));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 rgba(0,0,0,.45));
+}
+.invite{max-width:26ch;margin:1.2rem auto 2rem;font-size:1.3rem}
+.date{
+  font-family:var(--label);font-size:clamp(1rem,4.4vw,1.35rem);letter-spacing:.3em;
+  color:var(--gold-light);padding:.7rem 1.4rem;
+  border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);
+}
+
+.venue{margin-top:1.8rem;max-width:30ch}
+.venue .v-title{font-family:var(--label);letter-spacing:.2em;font-size:.85rem;color:var(--gold)}
+.venue address{font-style:normal;font-size:1.2rem}
+
+.cta{margin-top:2.4rem;display:flex;flex-direction:column;align-items:center;gap:1.1rem}
+.rsvp-btn{
+  font-family:var(--label);font-weight:600;letter-spacing:.16em;font-size:.8rem;cursor:pointer;
+  color:var(--ivory);background:transparent;
+  border:2px solid var(--gold);padding:.95rem 1.8rem;border-radius:999px;
+  transition:background .2s,color .2s;
+}
+.rsvp-btn:hover{background:var(--gold);color:var(--maroon-deep)}
+.rsvp-btn:focus-visible,.modal button:focus-visible,.modal input:focus-visible{outline:3px solid var(--gold-light);outline-offset:3px}
+.rsvp-phone{font-family:var(--label);letter-spacing:.12em;font-size:.95rem;color:var(--gold-light);text-decoration:none}
+.rsvp-phone:hover{text-decoration:underline}
+.from-heart{margin-top:2.6rem;font-family:var(--label);font-size:.68rem;letter-spacing:.3em;color:var(--gold)}
+
+footer{
+  text-align:center;background:var(--maroon-deep);padding:0 1rem 2rem;
+}
+footer .phanek{margin:0 -1rem 1.6rem}
+footer p{font-family:var(--label);font-size:.66rem;letter-spacing:.28em;color:var(--gold)}
+
+
+/* countdown */
+.countdown{display:flex;gap:.7rem;justify-content:center;margin-top:1.6rem}
+.cd{min-width:62px;padding:.7rem .4rem .5rem;border:1px solid var(--gold);border-radius:10px 10px 28px 28px;
+  background:rgba(46,7,19,.6);box-shadow:inset 0 0 0 3px rgba(46,7,19,.9),inset 0 0 0 4px var(--gold-dark)}
+.cd b{display:block;font-family:var(--display);font-size:1.7rem;line-height:1.1;color:var(--gold-light);font-weight:700}
+.cd span{font-family:var(--label);font-size:.6rem;letter-spacing:.14em;color:var(--ivory)}
+.cd-note{margin-top:1rem;font-style:italic;color:var(--gold-light);font-size:1.2rem}
+.map-link{
+  display:inline-block;margin-top:.9rem;font-family:var(--label);font-weight:600;font-size:.78rem;letter-spacing:.14em;
+  color:var(--maroon-deep);text-decoration:none;padding:.8rem 1.5rem;border-radius:999px;
+  background:linear-gradient(180deg,var(--gold-light),var(--gold) 55%,var(--gold-dark));
+  box-shadow:0 0 0 4px var(--maroon-deep),0 0 0 6px var(--gold)}
+.map-link:focus-visible{outline:3px solid #fff;outline-offset:6px}
+
+/* ---------- RSVP MODAL ---------- */
+.modal-back{
+  position:fixed;inset:0;z-index:80;display:none;align-items:center;justify-content:center;
+  background:rgba(20,3,9,.8);padding:1.2rem;
+}
+.modal-back.show{display:flex}
+.modal{
+  width:100%;max-width:420px;text-align:center;
+  background:linear-gradient(180deg,var(--maroon),var(--maroon-deep));
+  border:2px solid var(--gold);border-radius:14px;padding:2rem 1.5rem;
+  box-shadow:0 0 0 6px var(--maroon-deep),0 0 0 8px var(--gold-dark),0 30px 80px #000;
+}
+.modal h2{font-family:var(--display);font-size:1.6rem;color:var(--gold-light);margin-bottom:.6rem}
+.modal p{font-size:1.1rem;margin-bottom:1.2rem}
+.modal input{
+  width:100%;padding:.85rem 1rem;font:inherit;font-size:1.1rem;color:var(--ivory);
+  background:rgba(0,0,0,.3);border:1px solid var(--gold);border-radius:8px;margin-bottom:1.1rem;
+}
+.modal input::placeholder{color:rgba(247,236,210,.55)}
+.modal .row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+.modal button{
+  font-family:var(--label);letter-spacing:.12em;font-size:.76rem;font-weight:600;cursor:pointer;
+  padding:.85rem 1.3rem;border-radius:999px;border:2px solid var(--gold);
+}
+.modal .go{background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--maroon-deep)}
+.modal .close{background:transparent;color:var(--ivory)}
+.modal .err{color:#ffb4a8;font-size:1rem;min-height:1.4em;margin:-.5rem 0 .6rem}
+
+@media (prefers-reduced-motion:reduce){
+  .door{transition:opacity .6s}
+  #gate.open .door.left,#gate.open .door.right{transform:none;opacity:0}
+  body.revealed main{animation:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ROYAL DOOR -->
+<div id="gate" aria-label="Wedding invitation entrance">
+  <div class="light"></div>
+
+  <div class="door left">
+    <div class="panel">
+      <!-- lotus / Kangla-style motif -->
+      <svg viewBox="0 0 100 130" fill="none" stroke="#d4a94c" stroke-width="2" aria-hidden="true">
+        <path d="M50 8 C62 28 62 46 50 62 C38 46 38 28 50 8Z"/>
+        <path d="M50 62 C30 56 18 40 14 22 C32 26 46 40 50 62Z"/>
+        <path d="M50 62 C70 56 82 40 86 22 C68 26 54 40 50 62Z"/>
+        <path d="M50 62 C26 66 10 58 2 44 C22 42 40 50 50 62Z" opacity=".8"/>
+        <path d="M50 62 C74 66 90 58 98 44 C78 42 60 50 50 62Z" opacity=".8"/>
+        <circle cx="50" cy="78" r="6"/><circle cx="50" cy="78" r="2" fill="#d4a94c"/>
+        <path d="M50 84 V122 M50 100 C40 96 34 100 30 108 M50 100 C60 96 66 100 70 108"/>
+      </svg>
+    </div>
+    <span class="stud a"></span><span class="stud b"></span><span class="stud c"></span>
+    <span class="ring"></span>
+  </div>
+
+  <div class="door right">
+    <div class="panel">
+      <svg viewBox="0 0 100 130" fill="none" stroke="#d4a94c" stroke-width="2" aria-hidden="true">
+        <path d="M50 8 C62 28 62 46 50 62 C38 46 38 28 50 8Z"/>
+        <path d="M50 62 C30 56 18 40 14 22 C32 26 46 40 50 62Z"/>
+        <path d="M50 62 C70 56 82 40 86 22 C68 26 54 40 50 62Z"/>
+        <path d="M50 62 C26 66 10 58 2 44 C22 42 40 50 50 62Z" opacity=".8"/>
+        <path d="M50 62 C74 66 90 58 98 44 C78 42 60 50 50 62Z" opacity=".8"/>
+        <circle cx="50" cy="78" r="6"/><circle cx="50" cy="78" r="2" fill="#d4a94c"/>
+        <path d="M50 84 V122 M50 100 C40 96 34 100 30 108 M50 100 C60 96 66 100 70 108"/>
+      </svg>
+    </div>
+    <span class="stud a"></span><span class="stud b"></span><span class="stud c"></span>
+    <span class="ring"></span>
+  </div>
+
+  <div class="seal">
+    <div class="kicker">❧ ✦ ❧</div>
+    <button class="open-btn" id="openBtn" type="button">Open Invitation</button>
+  </div>
+</div>
+
+<!-- INVITATION -->
+<main>
+  <section class="hero">
+    <div class="phanek top"></div>
+
+    <div class="ornament">❧ ✦ ❧</div>
+    <p class="blessing">With the blessings of our families</p>
+    <p class="together">Together with joy and love,</p>
+
+    <div class="photo-wrap">
+      <div class="inner">
+        <img src="couple.jpg" alt="Rojit and Jessica" onerror="this.style.display='none'">
+      </div>
+    </div>
+
+    <h1>Rojit &amp; Jessica</h1>
+    <p class="invite">invite you to celebrate the beginning<br>of their forever.</p>
+
+    <div class="date">11 · DECEMBER · 2026</div>
+
+    <div class="countdown" id="countdown" aria-live="off">
+      <div class="cd"><b id="cdD">--</b><span>DAYS</span></div>
+      <div class="cd"><b id="cdH">--</b><span>HOURS</span></div>
+      <div class="cd"><b id="cdM">--</b><span>MINS</span></div>
+      <div class="cd"><b id="cdS">--</b><span>SECS</span></div>
+    </div>
+    <p class="cd-note" id="cdNote" hidden>The celebration has begun!</p>
+
+    <div class="venue" id="venue">
+      <div class="v-title">VENUE</div>
+      <address>Kwakeithel Laishram Leikai Community Hall,<br>Imphal West, Manipur</address>
+      <a class="map-link" href="https://maps.app.goo.gl/yhh3dHaaZXGPghAk7?g_st=ac" target="_blank" rel="noopener">VIEW LOCATION ON MAP</a>
+    </div>
+
+    <div class="cta">
+      <button class="rsvp-btn" id="rsvpBtn" type="button">RSVP</button>
+      <a class="rsvp-phone" href="tel:+917629951466">RSVP · +91 76299 51466</a>
+    </div>
+
+    <div class="from-heart">AN INVITATION FROM THE HEART ↓</div>
+
+    <div class="phanek bottom"></div>
+  </section>
+
+  <footer>
+    <div class="phanek"></div>
+    <p>MADE WITH LOVE · ROJIT &amp; JESSICA · 2026</p>
+  </footer>
+</main>
+
+<!-- RSVP -->
+<div class="modal-back" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
+  <div class="modal">
+    <h2 id="rsvpTitle">A joyful reply</h2>
+    <p>Enter your name to prepare an RSVP message you can send to the couple.</p>
+    <input id="guestName" type="text" placeholder="Your name" autocomplete="name">
+    <div class="err" id="err" role="alert"></div>
+    <div class="row">
+      <button class="go" id="prepare" type="button">Prepare message</button>
+      <button class="close" id="closeModal" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var PHONE = '917629951466';          // +91 76299 51466
+
+  var gate = document.getElementById('gate');
+  var btn  = document.getElementById('openBtn');
+
+  btn.addEventListener('click', function(){
+    gate.classList.add('open');
+    document.body.classList.add('revealed');
+    document.body.classList.remove('locked');
+    window.scrollTo(0,0);
+    setTimeout(function(){ gate.classList.add('gone'); }, 2600);
+  });
+
+
+  // countdown to 11 Dec 2026 (00:00 India time)
+  var target = new Date('2026-12-11T00:00:00+05:30').getTime();
+  function pad(n){ return n<10 ? '0'+n : ''+n; }
+  function tick(){
+    var d = target - Date.now();
+    if (d <= 0) {
+      document.getElementById('countdown').style.display='none';
+      document.getElementById('cdNote').hidden=false;
+      return;
+    }
+    document.getElementById('cdD').textContent = Math.floor(d/86400000);
+    document.getElementById('cdH').textContent = pad(Math.floor(d/3600000)%24);
+    document.getElementById('cdM').textContent = pad(Math.floor(d/60000)%60);
+    document.getElementById('cdS').textContent = pad(Math.floor(d/1000)%60);
+  }
+  tick(); setInterval(tick,1000);
+
+  var back = document.getElementById('modalBack');
+  var input = document.getElementById('guestName');
+  var err = document.getElementById('err');
+
+  function show(){ back.classList.add('show'); err.textContent=''; setTimeout(function(){input.focus()},50); }
+  function hide(){ back.classList.remove('show'); }
+
+  document.getElementById('rsvpBtn').addEventListener('click', show);
+  document.getElementById('closeModal').addEventListener('click', hide);
+  back.addEventListener('click', function(e){ if(e.target===back) hide(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') hide(); });
+
+  document.getElementById('prepare').addEventListener('click', function(){
+    var name = input.value.trim();
+    if(!name){ err.textContent='Please enter your name first.'; input.focus(); return; }
+    var msg = 'Hello! This is ' + name + '. I would love to attend the wedding of Rojit & Jessica on 11 December 2026. Looking forward to celebrating with you!';
+    window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    hide();
+  });
+})();
+</script>
+</body>
+</html>
